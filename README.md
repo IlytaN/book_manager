@@ -1,1 +1,1 @@
-ci_example
+This is a simple book manager application. User (book seller) can know which books are in stock, how many books have been sold and which books should be ordered. He/she can also add, update, delete books.
