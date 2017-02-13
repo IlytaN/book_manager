@@ -1,13 +1,13 @@
-<h1>Delete Customers</h1>
+<h1>Delete Books</h1>
 <TABLE BORDER="1">
-	<TR><TH>Firstname</TH><TH>Lastname</TH><TH>Delete selected</TH></TR>
+	<TR><TH>BookID</TH><TH>Book name</TH><TH>Delete selected</TH></TR>
 	<?php
-	foreach ($customers as $row) {
-		echo '<tr><td>'.$row['fname'].'</td>';
-		echo '<td>'.$row['lname'].'</td>';
+	foreach ($books as $row) {
+		echo '<tr><td>'.$row['BookID'].'</td>';
+		echo '<td>'.$row['Book_name'].'</td>';
 		echo '<td>';
-		echo '<button><a href="'.site_url('customer/remove_customer').'/'.
-		$row['id_customers'].'">Delete</a></button>';
+		echo '<button><a href="'.site_url('books/remove_book').'/'.
+		$row['BookID'].'">Delete</a></button>';
 		echo '</td></tr>';
 	}
 	?>

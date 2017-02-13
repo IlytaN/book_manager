@@ -1,6 +1,6 @@
 <h1>Books</h1>
 <TABLE BORDER="1">
-	<TR><TH>BookID</TH><TH>Book name</TH><TH>Price per item</TH><TH>Number of books</TH></TR>
+	<TR><TH>BookID</TH><TH>Book name</TH><TH>Price per item (€)</TH><TH>Number of books</TH></TR>
 	<?php
 	foreach ($books as $row) {
 		echo '<tr><td>'.$row['BookID'].'</td>';

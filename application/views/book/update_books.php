@@ -1,15 +1,15 @@
-<h1>Update Customers</h1>
-<FORM method="POST" action="<?php echo site_url('customer/update_customers'); ?>">
+<h1>Update Books</h1>
+<FORM method="POST" action="<?php echo site_url('book/update_books'); ?>">
 <TABLE>
-	<TR><TH>Firstname</TH><TH>Lastname</TH></TR>
+	<TR><TH>BookID</TH><TH>Price per item</TH><TH>Book_name</TH></TR>
 	<?php
-	foreach ($customers as $row) {
-		echo '<input type="hidden" name=id[] value="'.$row['id_customers'].'"/>';
-		echo '<tr><td><input type="text" name="fn[]" value="';
-			echo $row['fname'];
+	foreach ($books as $row) {
+		echo '<input type="hidden" name=BookID[] value="'.$row['BookID'].'"/>';
+		echo '<tr><td><input type="number" step="any" name="Price_per_item[]" value="';
+			echo $row['Price_per_item'];
 			echo '"/></td>';
-		echo '<td><input type="text" name="ln[]" value="';
-			echo $row['lname'];
+		echo '<td><input type="text" name="Book_name[]" value="';
+			echo $row['Book_name'];
 			echo '"/></td></tr>';
 	}
 	?>

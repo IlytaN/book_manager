@@ -14,10 +14,12 @@ class Books extends CI_Controller {
 		$btn=$this->input->post('btnSave');
 		if (isset($btn)) {
 			$insert_data=array(
-				"fname"=>$this->input->post('fn'),
-				"lname"=>$this->input->post('ln')
+				"BookID"=>$this->input->post('BookID'),
+				"Book_name"=>$this->input->post('Book_name'),
+				"Price_per_item"=>$this->input->post('Price_per_item'),
+				"Number"=>$this->input->post('Number')
 				);
-			$data['test']=$this->Book_model->addBook($insert_data);
+			$data['books']=$this->Book_model->addBook($insert_data);
 
 		}
 		$data['page']='book/add_books';
@@ -26,8 +28,8 @@ class Books extends CI_Controller {
 
 	public function delete_books() {
 		//this method will show the customers
-		$this->load->model('Books_model');
-		$data['books']=$this->Book_model->getCustomers();
+		$this->load->model('Book_model');
+		$data['books']=$this->Book_model->getBooks();
 		$data['page']='book/delete_books';
 		$this->load->view('menu/content',$data);
 	}
@@ -38,31 +40,31 @@ class Books extends CI_Controller {
 		$this->show_books();
 	}
 
-	public function update_customers() {
+	public function update_books() {
 		$this->load->model('Book_model');
 		$btn=$this->input->post('btnSave');
 		if (isset($btn)) {
-			$a_fname=$this->input->post('fn');
-			$a_lname=$this->input->post('ln');
-			$id_customers=$this->input->post('id');
+			$Price_per_item=$this->input->post('Price_per_item');
+			$Book_name=$this->input->post('Book_name');
+			$BookID=$this->input->post('BookID');
 			//calculate rows
 			$rows=0;
-			foreach ($id_customers as $a) {
+			foreach ($BookID as $a) {
 				$rows++;
 			}
 			//update database row by row
 			for($x=0; $x < $rows; $x++ ){
 				$update_data=array(
-					"fname"=>$a_fname[$x],
-					"lname"=>$a_lname[$x]
+					"Price_per_item"=>$Price_per_item[$x],
+					"Book_name"=>$Book_name[$x]
 					);
-				$this->Book_model->updateBook($update_data,$id_customers[$x]);
+				$this->Book_model->updateBook($update_data,$BookID[$x]);
 			}
 
 		}
 
-		$data['customers']=$this->Customer_model->getCustomers();
-		$data['page']='customer/update_customers';
+		$data['books']=$this->Book_model->getBooks();
+		$data['page']='book/update_books';
 		$this->load->view('menu/content',$data);
 	}
 }
