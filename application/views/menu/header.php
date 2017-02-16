@@ -13,4 +13,9 @@
 	<li><a href="<?php echo site_url('books/add_books');?>">Add a book</a></li>
 	<li><a href="<?php echo site_url('books/delete_books');?>">Delete a book</a></li>
 	<li><a href="<?php echo site_url('books/update_books');?>">Update books</a></li>
+	<li><a href="<?php echo site_url('sold/show_sold');?>">Show sold</a></li>
+	<li><a href="<?php echo site_url('sold/add_sold');?>">Add a bill</a></li>
+	<li><a href="<?php echo site_url('sold/delete_sold');?>">Delete a sold</a></li>
+	<li><a href="<?php echo site_url('sold/update_sold');?>">Update sold</a></li>
+	<li><a href="<?php echo site_url('order/show_orders');?>">Show orders</a></li>
 </ul>
