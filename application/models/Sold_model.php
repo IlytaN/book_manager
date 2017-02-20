@@ -15,12 +15,12 @@ Class Sold_model extends CI_model {
 	}
 
 	public function deleteSold($chosen_id) {
-		$this->db->where('BookID',$chosen_id);
+		$this->db->where('Bill_ID',$chosen_id);
 		$this->db->delete('sold');
 	}
 
-	public function updateSold($update_data,$BookID){
-		$this->db->where('BookID',$BookID);
+	public function updateSold($update_data,$Bill_ID){
+		$this->db->where('Bill_ID',$Bill_ID);
 		$this->db->update('sold',$update_data);
 
 	}

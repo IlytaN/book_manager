@@ -1,4 +1,4 @@
-<h1>Add new Customer</h1>
+<h1>Add Book</h1>
 <FORM action="<?php echo site_url('books/add_books'); ?>" method="POST">
 <TABLE>
 	<TR><TD>BookID</TD><TD><input type="text" name="BookID" required /></TD></TR>

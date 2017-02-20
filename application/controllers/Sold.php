@@ -9,62 +9,61 @@ class Sold extends CI_Controller {
 		$this->load->view('menu/content',$data);
 	}
 
-	public function add_books() {
+	public function add_sold() {
+		$this->load->model('Sold_model');
 		$this->load->model('Book_model');
+		$data['books']=$this->Book_model->getBooks();
 		$btn=$this->input->post('btnSave');
 		if (isset($btn)) {
 			$insert_data=array(
+				"Bill_ID"=>$this->input->post('Bill_ID'),
 				"BookID"=>$this->input->post('BookID'),
-				"Book_name"=>$this->input->post('Book_name'),
-				"Price_per_item"=>$this->input->post('Price_per_item'),
-				"Number"=>$this->input->post('Number')
+				"Sold_number"=>$this->input->post('Sold_number')
 				);
-			$data['books']=$this->Book_model->addBook($insert_data);
+			$data['sold']=$this->Sold_model->addSold($insert_data);
 
 		}
-		$data['page']='book/add_books';
+		$data['page']='sold/add_sold';
 		$this->load->view('menu/content',$data);
 	}
 
-	public function delete_books() {
-		//this method will show the customers
-		$this->load->model('Book_model');
-		$data['books']=$this->Book_model->getBooks();
-		$data['page']='book/delete_books';
+	public function delete_sold() {
+		//this method will show the sold books
+		$this->load->model('Sold_model');
+		$data['sold']=$this->Sold_model->getSold();
+		$data['page']='sold/delete_sold';
 		$this->load->view('menu/content',$data);
 	}
 
-	public function remove_book($chosen_id){
-		$this->load->model('Book_model');
-		$this->Book_model->deleteBook($chosen_id);
-		$this->show_books();
+	public function remove_sold($chosen_id){
+		$this->load->model('Sold_model');
+		$this->Sold_model->deleteSold($chosen_id);
+		$this->delete_sold();
 	}
 
-	public function update_books() {
-		$this->load->model('Book_model');
+	public function update_sold() {
+		$this->load->model('Sold_model');
 		$btn=$this->input->post('btnSave');
 		if (isset($btn)) {
-			$Price_per_item=$this->input->post('Price_per_item');
-			$Book_name=$this->input->post('Book_name');
-			$BookID=$this->input->post('BookID');
+			$Sold_number=$this->input->post('Sold_number');
+			$Bill_ID=$this->input->post('Bill_ID');
 			//calculate rows
 			$rows=0;
-			foreach ($BookID as $a) {
+			foreach ($Bill_ID as $a) {
 				$rows++;
 			}
 			//update database row by row
 			for($x=0; $x < $rows; $x++ ){
 				$update_data=array(
-					"Price_per_item"=>$Price_per_item[$x],
-					"Book_name"=>$Book_name[$x]
+					"Sold_number"=>$Sold_number[$x]
 					);
-				$this->Book_model->updateBook($update_data,$BookID[$x]);
+				$this->Sold_model->updateSold($update_data,$Bill_ID[$x]);
 			}
 
 		}
 
-		$data['books']=$this->Book_model->getBooks();
-		$data['page']='book/update_books';
+		$data['sold']=$this->Sold_model->getSold();
+		$data['page']='sold/update_sold';
 		$this->load->view('menu/content',$data);
 	}
 }

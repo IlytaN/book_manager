@@ -9,62 +9,70 @@ class Order extends CI_Controller {
 		$this->load->view('menu/content',$data);
 	}
 
-	public function add_books() {
+	public function add_orders() {
+		$this->load->model('Order_model');
 		$this->load->model('Book_model');
+		$data['books']=$this->Book_model->getBooks();
 		$btn=$this->input->post('btnSave');
 		if (isset($btn)) {
 			$insert_data=array(
+				"Order_ID"=>$this->input->post('Order_ID'),
 				"BookID"=>$this->input->post('BookID'),
-				"Book_name"=>$this->input->post('Book_name'),
-				"Price_per_item"=>$this->input->post('Price_per_item'),
-				"Number"=>$this->input->post('Number')
+				"Order_date"=>$this->input->post('Order_date'),
+				"Transport_time"=>$this->input->post('Transport_time'),
+				"Number_of_books"=>$this->input->post('Number_of_books'),
+				"Payment"=>$this->input->post('Payment')
 				);
-			$data['books']=$this->Book_model->addBook($insert_data);
+			$data['orders']=$this->Order_model->addOrders($insert_data);
 
 		}
-		$data['page']='book/add_books';
+		$data['page']='order/add_orders';
 		$this->load->view('menu/content',$data);
 	}
 
-	public function delete_books() {
+	public function delete_orders() {
 		//this method will show the customers
-		$this->load->model('Book_model');
-		$data['books']=$this->Book_model->getBooks();
-		$data['page']='book/delete_books';
+		$this->load->model('Order_model');
+		$data['orders']=$this->Order_model->getOrders();
+		$data['page']='order/delete_orders';
 		$this->load->view('menu/content',$data);
 	}
 
-	public function remove_book($chosen_id){
-		$this->load->model('Book_model');
-		$this->Book_model->deleteBook($chosen_id);
-		$this->show_books();
+	public function remove_order($chosen_id){
+		$this->load->model('Order_model');
+		$this->Order_model->deleteOrders($chosen_id);
+		$this->delete_orders();
 	}
 
-	public function update_books() {
-		$this->load->model('Book_model');
+	public function update_orders() {
+		$this->load->model('Order_model');
 		$btn=$this->input->post('btnSave');
 		if (isset($btn)) {
-			$Price_per_item=$this->input->post('Price_per_item');
-			$Book_name=$this->input->post('Book_name');
-			$BookID=$this->input->post('BookID');
+			$Order_date=$this->input->post('Order_date');
+			$Transport_time=$this->input->post('Transport_time');
+			$Number_of_books=$this->input->post('Number_of_books');
+			$Payment=$this->input->post('Payment');
+			$Order_ID=$this->input->post('Order_ID');
 			//calculate rows
 			$rows=0;
-			foreach ($BookID as $a) {
+			foreach ($Order_ID as $a) {
 				$rows++;
 			}
 			//update database row by row
 			for($x=0; $x < $rows; $x++ ){
 				$update_data=array(
-					"Price_per_item"=>$Price_per_item[$x],
-					"Book_name"=>$Book_name[$x]
+					"Order_date"=>$Order_date[$x],
+					"Transport_time"=>$Transport_time[$x],
+					"Number_of_books"=>$Number_of_books[$x],
+					"Payment"=>$Payment[$x]
 					);
-				$this->Book_model->updateBook($update_data,$BookID[$x]);
+				$this->Order_model->updateOrders($update_data,$Order_ID[$x]);
 			}
 
 		}
 
-		$data['books']=$this->Book_model->getBooks();
-		$data['page']='book/update_books';
+		$data['orders']=$this->Order_model->getOrders();
+		$data['page']='order/update_orders';
 		$this->load->view('menu/content',$data);
 	}
 }
