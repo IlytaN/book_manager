@@ -1,5 +1,5 @@
-<h1>Sold books</h1>
-<TABLE BORDER="1">
+<h1 class="text-info">Sold books</h1>
+<TABLE class="table table-bordered">
 	<TR><TH>Bill ID</TH><TH>Book ID</TH><TH>Book name</TH><TH>Sold number</TH><TH>Price of each item (€)</TH><TH>Revenue (€)</TH></TR>
 	<?php
 	foreach ($sold as $row) {

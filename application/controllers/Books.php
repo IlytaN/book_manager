@@ -27,17 +27,22 @@ class Books extends CI_Controller {
 	}
 
 	public function delete_books() {
-		//this method will show the customers
+		//this method will show the books
 		$this->load->model('Book_model');
 		$data['books']=$this->Book_model->getBooks();
 		$data['page']='book/delete_books';
 		$this->load->view('menu/content',$data);
 	}
-
-	public function remove_book($chosen_id){
+	public function show_remove_books ($chosen_id) {
+		$this->load->model('Book_model');
+		$data['books']=$this->Book_model->getRemoveBooks($chosen_id);
+		$data['page']='book/show_delete_books';
+		$this->load->view('menu/content',$data);
+	}
+	public function remove_books($chosen_id){
 		$this->load->model('Book_model');
 		$this->Book_model->deleteBook($chosen_id);
-		$this->show_books();
+		$this->delete_books();
 	}
 
 	public function update_books() {

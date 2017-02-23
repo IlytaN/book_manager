@@ -1,7 +1,7 @@
-<h1>Orders</h1>
+<h1 class="text-info">Orders</h1>
 <!-- I added column "Number_of_books" and "Payment" into table "Orders" of the database
     (design document didn't have them, but I think they're necessary) -->
-<TABLE BORDER="1">
+<TABLE class="table table-bordered">
 	<TR><TH>Order ID</TH><TH>Book ID</TH><TH>Book name</TH><TH>Order date</TH><TH>estimated comming date</TH>
       <TH>Number of ordered books</TH><TH>Order costs</TH></TR>
 	<?php

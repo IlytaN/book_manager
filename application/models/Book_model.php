@@ -17,7 +17,12 @@ Class Book_model extends CI_model {
 		$this->db->where('BookID',$chosen_id);
 		$this->db->delete('books');
 	}
-
+	public function getRemoveBooks($chosen_id) {
+		$this->db->select('*');
+		$this->db->from('books');
+		$this->db->where('BookID',$chosen_id);
+		return $this->db->get()->result_array();
+	}
 	public function updateBook($update_data,$BookID){
 		$this->db->where('BookID',$BookID);
 		$this->db->update('books',$update_data);

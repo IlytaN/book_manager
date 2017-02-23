@@ -1,8 +1,8 @@
-<h1>Update orders</h1>
+<h1 class="text-info">Update orders</h1>
 <FORM method="POST" action="<?php echo site_url('order/update_orders'); ?>">
-<TABLE>
-	<TR><TH>Book ID</TH><TH>Book_name</TH><TH>Order date</TH>
-    <TH>Estimated comming date</TH><TH>Number of ordered books</TH><TH>Costs</TH></TR>
+<TABLE class="table table-striped">
+	<TR><TH>Book ID</TH><TH> Book_name</TH><TH> Order date</TH>
+    <TH> Estimated comming date</TH><TH> Number of ordered books </TH><TH> Costs (€)</TH></TR>
 	<?php
 	foreach ($orders as $row) {
 		echo '<input type="hidden" name=Order_ID[] value="'.$row['Order_ID'].'"/>';
@@ -22,5 +22,5 @@
 				echo '"/></td></tr>';
 	}
 	?>
-	<tr><td></td><td><input type="submit" name="btnSave" value="Save"/></td>
 </TABLE>
+<input class="btn btn-primary" type="submit" name="btnSave" value="Save"/>

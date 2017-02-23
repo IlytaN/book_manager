@@ -1,6 +1,6 @@
-<h1>Books</h1>
+<h1 class="text-info">Books</h1>
 <h4>(!) Information about the available books in the shop</h4>
-<TABLE BORDER="1">
+<TABLE class="table table-bordered">
 	<TR><TH>BookID</TH><TH>Book name</TH><TH>Price per item (€)</TH><TH>Number of books</TH></TR>
 	<?php
 	foreach ($books as $row) {

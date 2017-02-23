@@ -34,7 +34,12 @@ class Sold extends CI_Controller {
 		$data['page']='sold/delete_sold';
 		$this->load->view('menu/content',$data);
 	}
-
+	public function show_remove_sold ($chosen_id) {
+		$this->load->model('Sold_model');
+		$data['sold']=$this->Sold_model->getRemoveSold($chosen_id);
+		$data['page']='sold/show_delete_sold';
+		$this->load->view('menu/content',$data);
+	}
 	public function remove_sold($chosen_id){
 		$this->load->model('Sold_model');
 		$this->Sold_model->deleteSold($chosen_id);

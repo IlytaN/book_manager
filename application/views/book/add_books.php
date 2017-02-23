@@ -1,17 +1,17 @@
-<h1>Add Book</h1>
-<FORM action="<?php echo site_url('books/add_books'); ?>" method="POST">
+<h1 class="text-info">Add Book</h1>
+<FORM  action="<?php echo site_url('books/add_books'); ?>" method="POST">
 <TABLE>
-	<TR><TD>BookID</TD><TD><input type="text" name="BookID" required /></TD></TR>
-	<TR><TD>Book name</TD><TD><input type="text" name="Book_name" required/></TD></TR>
-	<TR><TD>Price per item (€)</TD><TD><input type="number" step="any" name="Price_per_item"/></TD></TR>
-	<TR><TD>Number of the book</TD><TD><input type="number" name="Number"/></TD></TR>
-	<TR><TD></TD><TD><input type="submit" name="btnSave" value="Save"/></TD></TR>
+	<div class="form-group"><label>Book ID:</label><input type="text" class="form-control" name="BookID" required></div>
+	<div class="form-group"><label>Book Name:</label><input type="text" class="form-control" name="Book_name" required></div>
+	<div class="form-group"><label>Price per item (€):</label><input step="any" name="Price_per_item" type="number" class="form-control" required></div>
+	<div class="form-group"><label>Number of the book:</label><input class="form-control" type="number" name="Number" required></div>
+	<input class="btn btn-info" type="submit" name="btnSave" value="Save"/>
 </TABLE>
 </FORM>
 
 <?php
-if (isset($test)) {
-	if ($test)
+if (isset($books)) {
+	if ($books)
 		echo 'Data Inserted';
 	else
 		echo 'Something went wrong';

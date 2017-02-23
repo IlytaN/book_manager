@@ -20,6 +20,13 @@ Class Order_model extends CI_model {
 		$this->db->delete('orders');
 	}
 
+	public function getRemoveOrders($chosen_id) {
+		$this->db->select('*');
+		$this->db->from('orders');
+		$this->db->where('Order_ID',$chosen_id);
+		return $this->db->get()->result_array();
+	}
+
 	public function updateOrders($update_data,$Order_ID){
 		$this->db->where('Order_ID',$Order_ID);
 		$this->db->update('orders',$update_data);

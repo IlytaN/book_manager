@@ -31,13 +31,18 @@ class Order extends CI_Controller {
 	}
 
 	public function delete_orders() {
-		//this method will show the customers
 		$this->load->model('Order_model');
 		$data['orders']=$this->Order_model->getOrders();
 		$data['page']='order/delete_orders';
 		$this->load->view('menu/content',$data);
 	}
 
+	public function show_remove_order ($chosen_id) {
+		$this->load->model('Order_model');
+		$data['orders']=$this->Order_model->getRemoveOrders($chosen_id);
+		$data['page']='order/show_delete_orders';
+		$this->load->view('menu/content',$data);
+	}
 	public function remove_order($chosen_id){
 		$this->load->model('Order_model');
 		$this->Order_model->deleteOrders($chosen_id);
